@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "OLAP_SSRS_SupplyChain_Ver2", "OLAP_SSRS_SupplyChain_Ver2.rptproj", "{1F662245-7B55-49CA-90A1-1941002A40DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.Debug|Default.ActiveCfg = Debug
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.Debug|Default.Build.0 = Debug
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.Debug|Default.Deploy.0 = Debug
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.DebugLocal|Default.Build.0 = DebugLocal
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.Release|Default.ActiveCfg = Release
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.Release|Default.Build.0 = Release
+		{1F662245-7B55-49CA-90A1-1941002A40DF}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {880BBF4B-887D-4AF4-8864-DF24B5145F0D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1F662245-7B55-49CA-90A1-1941002A40DF}|OLAP_SSRS_SupplyChain_Ver2.rptproj|D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\Report_SumBenefit_VietnamAnhChina.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{1F662245-7B55-49CA-90A1-1941002A40DF}|OLAP_SSRS_SupplyChain_Ver2.rptproj|solutionrelative:Report_SumBenefit_VietnamAnhChina.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F662245-7B55-49CA-90A1-1941002A40DF}|OLAP_SSRS_SupplyChain_Ver2.rptproj|D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\TopSale_ShippingModes_ThroughYears.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{1F662245-7B55-49CA-90A1-1941002A40DF}|OLAP_SSRS_SupplyChain_Ver2.rptproj|solutionrelative:TopSale_ShippingModes_ThroughYears.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F662245-7B55-49CA-90A1-1941002A40DF}|OLAP_SSRS_SupplyChain_Ver2.rptproj|D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\Markets_Revenue.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{1F662245-7B55-49CA-90A1-1941002A40DF}|OLAP_SSRS_SupplyChain_Ver2.rptproj|solutionrelative:Markets_Revenue.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TopSale_ShippingModes_ThroughYears.rdl [Design]",
+              "DocumentMoniker": "D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\TopSale_ShippingModes_ThroughYears.rdl",
+              "RelativeDocumentMoniker": "TopSale_ShippingModes_ThroughYears.rdl",
+              "ToolTip": "D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\TopSale_ShippingModes_ThroughYears.rdl [Design]",
+              "RelativeToolTip": "TopSale_ShippingModes_ThroughYears.rdl [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-22T15:18:36.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Report_SumBenefit_VietnamAnhChina.rdl [Design]",
+              "DocumentMoniker": "D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\Report_SumBenefit_VietnamAnhChina.rdl",
+              "RelativeDocumentMoniker": "Report_SumBenefit_VietnamAnhChina.rdl",
+              "ToolTip": "D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\Report_SumBenefit_VietnamAnhChina.rdl [Design]",
+              "RelativeToolTip": "Report_SumBenefit_VietnamAnhChina.rdl [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-22T14:58:10.395Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Markets_Revenue.rdl [Design]",
+              "DocumentMoniker": "D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\Markets_Revenue.rdl",
+              "RelativeDocumentMoniker": "Markets_Revenue.rdl",
+              "ToolTip": "D:\\Code space\\Project OLAP\\OLAP_SSRS_SupplyChain_Ver2\\Markets_Revenue.rdl [Design]",
+              "RelativeToolTip": "Markets_Revenue.rdl [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-22T15:13:27.61Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

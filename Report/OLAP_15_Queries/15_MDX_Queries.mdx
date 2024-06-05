@@ -1,0 +1,196 @@
+-- Vietnam Analysis
+-- Query 1: Thong ke so so item duoc ban ra va tong loi nhuan theo thang va nam
+SELECT 
+NON EMPTY { [Measures].[Sum Item Quantity],
+	[Measures].[Sum Benefit Per Order]} ON COLUMNS,
+NON EMPTY { 
+[Dim Times].[Year].CHILDREN * [Dim Times].[Month].CHILDREN }  ON ROWS
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Locations].[Country].&[Vietnam]&[Pacific Asia];
+
+-- Query 2: Tong doanh thu, so san pham ban ra, so ngay giao hang tren 
+-- ke hoach/thuc te cua Vietnam, Thailand, China trong nam 2017
+SELECT 
+NON EMPTY { [Dim Locations].[Country].&[Vietnam]&[Pacific Asia],
+	[Dim Locations].[Country].&[Tailandia]&[Pacific Asia],
+	[Dim Locations].[Country].&[China]&[Pacific Asia]} ON ROWS,
+NON EMPTY { [Measures].[Sum Benefit Per Order],
+	[Measures].[Sum Item Quantity],
+	[Measures].[AVG Scheduled Day For Shipping],
+	[Measures].[AVG Real Day For Shipping] } ON COLUMNS
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Times].[Year].&[2017];
+
+-- Query 3: Vietnam KPI, thong ke tong loi nhuan hang thang 
+--cua VN co hon muc trung binh 
+SELECT 
+NON EMPTY KPIStatus("Benefit KPI") ON COLUMNS,
+NON EMPTY ([Dim Times].[Year].CHILDREN, [Dim Times].[Month].CHILDREN ) ON ROWS 
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Locations].[Country].&[Vietnam]&[Pacific Asia];
+
+-- Query 4: Vietnam KPI, thong ke tang truong tai Vietnam theo cac nam
+SELECT 
+NON EMPTY { KPIValue("Benefit KPI"),
+	KPITrend("Benefit KPI") } ON COLUMNS,
+NON EMPTY [Dim Times].[Year].CHILDREN ON ROWS
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Locations].[Country].&[Vietnam]&[Pacific Asia];
+
+-- Query 5: Top 5 loai sang pham (ten loai san pham) duoc mua nhieu nhat tai Vietnam
+SELECT 
+NON EMPTY [Measures].[Sum Item Quantity] ON COLUMNS,
+TOPCOUNT ( ([Dim Products].[Category Name].CHILDREN, [Dim Products].[Product Name].CHILDREN),
+	5,
+	[Measures].[Sum Item Quantity]) ON ROWS
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Locations].[Country].&[Vietnam]&[Pacific Asia];	
+
+-- Sales Analysis
+-- Query 6: Liet ke danh sach cac nuoc co loi nhuan	am
+SELECT 
+NON EMPTY [Measures].[Sum Benefit Per Order] ON COLUMNS,
+ORDER (
+	FILTER ( [Dim Locations].[Country].CHILDREN,
+		[Measures].[Sum Benefit Per Order] <0),
+	[Measures].[Sum Benefit Per Order],
+	ASC) ON ROWS
+FROM [Cube OLAP Database Supply Chain];
+
+-- Query 7: Tong doanh thu va loi nhuan cua chau Au, sap xep theo thang nam
+SELECT
+NON EMPTY { [Measures].[Sum Order Items Total],
+    [Measures].[Sum Benefit Per Order] } ON COLUMNS,
+NON EMPTY 
+{
+    [Dim Times].[Year].CHILDREN *
+    [Dim Times].[time_hierarchy].[Month].MEMBERS 
+} ON ROWS
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Locations].[Market].&[Europe];
+
+	
+-- Query 8: liet ke 5 nuoc khong phai chau Au va My dem lai nhieu loi nhuan nhat
+SELECT [Measures].[Sum Benefit Per Order] ON COLUMNS,
+TOPCOUNT ( 
+    ORDER ( 
+           EXCEPT(
+                [Dim Locations].[Country].CHILDREN, 
+				[Dim Locations].[Country].&[Estados Unidos]&[USCA]
+            ),
+        [Measures].[Sum Benefit Per Order],
+        ASC 
+    ),
+    5,
+    [Measures].[Sum Benefit Per Order]
+) ON ROWS
+FROM [Cube OLAP Database Supply Chain];
+
+-- Query 9: Liet ke 5 nuoc co doanh thu thap nhat (khong am doanh thu)
+SELECT [Measures].[Sum Benefit Per Order] ON COLUMNS,
+TAIL(
+	ORDER(
+		FILTER(
+			[Dim Locations].[Country].CHILDREN,
+			[Measures].[Sum Benefit Per Order] > 0
+			),
+		[Measures].[Sum Benefit Per Order],
+		DESC 
+	),
+	5
+) ON ROWS
+FROM [Cube OLAP Database Supply Chain];
+
+-- Query 10: Danh sach cac san pham luon nam trong top 10 doanh thu 
+-- trong cac nam 2015, 2016, 2017
+SELECT 
+	[Measures].[Sum Order Item Total] ON COLUMNS,
+        INTERSECT(
+            INTERSECT(
+                TOPCOUNT(
+                    [Dim Products].[Product Name].CHILDREN,
+                    10,
+                    ([Measures].[Sum Order Item Total], [Dim Times].[Year].&[2015])
+                ),
+                TOPCOUNT(
+                    [Dim Products].[Product Name].CHILDREN,
+                    10,
+                    ([Measures].[Sum Order Item Total], [Dim Times].[Year].&[2016])
+                )
+            ),
+            TOPCOUNT(
+                [Dim Products].[Product Name].CHILDREN,
+                10,
+                ([Measures].[Sum Order Item Total], [Dim Times].[Year].&[2017])
+            )
+		) ON ROWS
+FROM [Cube OLAP Database Supply Chain];
+
+-- Logistic Analysis
+-- Query 11: Tinh trang giao hang dung hen tai chau A - Thai Binh Duong
+SELECT 
+{ 
+	[Measures].[Measures].[AVG Scheduled Day For Shipping], 
+	[Measures].[Measures].[AVG Real Day For Shipping],
+	[Measures].[Late Risk]
+} ON COLUMNS,
+[Dim Locations].[Country].CHILDREN ON ROWS
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Locations].[Market].&[Pacific Asia];
+
+-- Query 12: Thong ke so luong don hang duoc tao trong cac thu trong tuan
+SELECT 
+NON EMPTY [Measures].[Fact Order Items Count] ON COLUMNS, 
+NON EMPTY [Dim Times].[Date Of Week].[Date Of Week].MEMBERS ON ROWS
+FROM [Cube OLAP Database Supply Chain];
+
+-- Query 13: Thong ke tinh trang giao hang tai Trung Quoc
+SELECT 
+NON EMPTY ([Measures].[Fact Order Items Count], [Dim Shipping Modes].[Shipping Mode].CHILDREN) ON COLUMNS, 
+NON EMPTY ([Dim Order Statuses].[Order Status].CHILDREN) ON ROWS
+FROM [Cube OLAP Database Supply Chain]
+WHERE [Dim Locations].[Country].&[China]&[Pacific Asia];
+
+-- Customer Analysis
+-- Query 14: Danh sach id cac customer thanh toan cash > 700 hoac debit > 1200
+SELECT 
+{ 
+    ([Measures].[Sum Benefit Per Order], [Dim Types].[Type].&[CASH]),
+    ([Measures].[Sum Benefit Per Order], [Dim Types].[Type].&[DEBIT])
+} ON COLUMNS,
+UNION
+(
+    FILTER(
+        ([Dim Customers].[Customer Id].CHILDREN,[Dim Customers].[Customer Fname].CHILDREN,[Dim Customers].[Customer Lname].CHILDREN),
+        ([Measures].[Sum Benefit Per Order], [Dim Types].[Type].&[CASH]) > 700
+    ),
+    FILTER(
+ ([Dim Customers].[Customer Id].CHILDREN,[Dim Customers].[Customer Fname].CHILDREN,[Dim Customers].[Customer Lname].CHILDREN),
+        ([Measures].[Sum Benefit Per Order], [Dim Types].[Type].&[DEBIT]) > 1200
+    )
+) ON ROWS
+FROM [Cube OLAP Database Supply Chain];
+
+-- Query 15: Lay 10 khach hang dem lai nhieu doanh thu nhat trong nuoc co nhieu doanh thu nhat
+SELECT 
+(
+    [Measures].[Sum Benefit Per Order]
+) ON COLUMNS,
+TOPCOUNT ( 
+	(
+		[Dim Customers].[Customer Id].CHILDREN,
+		[Dim Customers].[Customer Fname].CHILDREN,
+		[Dim Customers].[Customer Lname].CHILDREN
+	),
+	10,
+	[Measures].[Sum Benefit Per Order]
+) ON ROWS
+FROM (
+    SELECT 
+        TOPCOUNT (
+            [Dim Locations].[Country].CHILDREN,
+            1,
+            [Measures].[Sum Benefit Per Order]
+        ) ON COLUMNS
+    FROM [Cube OLAP Database Supply Chain]
+)

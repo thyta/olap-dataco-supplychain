@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "OLAP_SSAS_SupplyChain", "OLAP_SSAS_SupplyChain.dwproj", "{BC83772D-0C1A-4B16-916B-A1FEDE25A8BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC83772D-0C1A-4B16-916B-A1FEDE25A8BA}.Development|Default.ActiveCfg = Development
+		{BC83772D-0C1A-4B16-916B-A1FEDE25A8BA}.Development|Default.Build.0 = Development
+		{BC83772D-0C1A-4B16-916B-A1FEDE25A8BA}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FA1BFF2-A655-4AD1-A64C-043EF34CD580}
+	EndGlobalSection
+EndGlobal
